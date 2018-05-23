@@ -6,7 +6,7 @@
 	
 	<groupId>com.ebusato.moip</groupId>
 	<artifactId>moip-challenge</artifactId>
-	<version>0.0.1-SNAPSHOT</version>	
+	<version>${moip.challenge.version}</version>	
 	<packaging>pom</packaging>
 	
 	<name>parent pom</name>
@@ -27,7 +27,34 @@
 	</parent>
 	
 	<modules>
+		<module>moip-challenge-persistence</module>
+		<module>moip-challenge-service</module>
 		<module>moip-challenge-api</module>
 	</modules>
+	
+	<properties>
+		<moip.challenge.version>0.0.1-SNAPSHOT</moip.challenge.version>
+	</properties>
+	
+	<dependencyManagement>
+		<dependencies>
+			<!-- project artifacts -->
+			<dependency>
+				<groupId>com.ebusato.moip</groupId>
+				<artifactId>moip-challenge-persistence</artifactId>
+				<version>${moip.challenge.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ebusato.moip</groupId>
+				<artifactId>moip-challenge-service</artifactId>
+				<version>${moip.challenge.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ebusato.moip</groupId>
+				<artifactId>moip-challenge-api</artifactId>
+				<version>${moip.challenge.version}</version>
+			</dependency>			
+		</dependencies>
+	</dependencyManagement>
 	
 </project>

@@ -1,12 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
 	<modelVersion>4.0.0</modelVersion>
 	
-	<artifactId>moip-challenge-api</artifactId>
+	<artifactId>moip-challenge-service</artifactId>
 	
-	<name>rest api</name>
-	<description>moip challenge rest api</description>
+	<name>moip challenge service layer</name>
+	<description>moip challenge service layer</description>
 	
 	<parent>
 		<groupId>com.ebusato.moip</groupId>
@@ -16,22 +17,9 @@
 	
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-rest</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>com.ebusato.moip</groupId>
-			<artifactId>moip-challenge-service</artifactId>
+			<artifactId>moip-challenge-persistence</artifactId>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 	
 </project>
