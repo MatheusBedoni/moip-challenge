@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId>com.ebusato.moip</groupId>
+	<artifactId>moip-challenge</artifactId>
+	<version>0.0.1-SNAPSHOT</version>	
+	<packaging>pom</packaging>
+	
+	<name>parent pom</name>
+	<description>parent pom</description>
+	
+	<developers>
+		<developer>
+			<id>ebusato</id>
+			<name>Elias Cury Busato</name>
+			<email>elias.cury@gmail.com</email>
+		</developer>
+	</developers>
+	
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.2.RELEASE</version>
+	</parent>
+	
+	<modules>
+		<module>moip-challenge-api</module>
+	</modules>
+	
+</project>
