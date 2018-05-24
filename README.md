@@ -46,7 +46,7 @@ Availables endpoints are:
 
 ### Creates a new payment
 
-POST http://{server}:{port}/payments
+POST http://{server}:{port}/payments  
 
 Valid payment types are: "BOLETO", "CREDIT_CARD"
 
@@ -91,9 +91,9 @@ Request body example for a CREDIT_CARD payment:
 }
 ```
 
-All fields are required.
-Valid values for brand field are: "VISA", "MASTERCARD".
-Expiration date must follow the pattern: yyyy-MM
+All fields are required.  
+Valid values for brand field are: "VISA", "MASTERCARD".  
+Expiration date must follow the pattern: yyyy-MM  
 
 ### Retrieves status of a created payment
 	
