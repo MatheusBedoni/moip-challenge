@@ -4,84 +4,125 @@ Challenge proposed by MOIP.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Rest API build with Spring Boot. 
+Persistence layer using Spring Data MongoDB. 
+Application has mongodb embbeded.
+Default Running port 8080.  
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
 ```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
-```
-Give the example
+Java 8
+Maven
 ```
 
-And repeat
+### Getting the code
+
+Clone repository:
 
 ```
-until finished
+$ git clone git://github.com/eliasbusato/moip-challenge.git
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+### Building application
 
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+Run the following maven command into root folder:
 
 ```
-Give an example
+$ mvn clean package -U
 ```
 
-### And coding style tests
+### Running application
 
-Explain what these tests test and why
+Execute the following commando into root folder:
 
 ```
-Give an example
+$ java -jar moip-challenge-api/target/moip-challenge-api-0.0.1-SNAPSHOT.jar
 ```
 
-## Deployment
+## Endpoints
 
-Add additional notes about how to deploy this on a live system
+Availables endpoints are:
+
+### Creates a new payment
+
+POST http://<server>:<port>/payments
+
+Valid payment types are: "BOLETO", "CREDIT_CARD"
+
+Request body example for a BOLETO payment:
+
+```
+{
+	"amount" : 30.00,
+	"clientId" : "09023FU213A1R6VRAJ225",
+	"customer" : {
+		"cpf" : "00000000191",
+		"email" : "john@doe.com",
+		"name" : "John Doe"
+	},
+	"details" : {
+		"type" : "BOLETO"
+	}
+}
+```
+
+All fields are required.
+
+Request body example for a CREDIT_CARD payment:
+
+```
+{
+	"amount" : 30.00,
+	"clientId" : "09023FU213A1R6VRAJ225",
+	"customer" : {
+		"cpf" : "00000000191",
+		"email" : "john@doe.com",
+		"name" : "John Doe"
+	},
+	"details" : {
+		"type" : "CREDIT_CARD",
+		"brand" : "VISA",
+		"expiration" : "2020-02",
+		"number" : "39483294832",
+		"holder" : "john doe",
+		"cvv" : "666"
+	}
+}
+```
+
+All fields are required.
+Valid values for brand field are: "VISA", "MASTERCARD".
+Expiration date must follow the pattern: yyyy-MM
+
+### Retrieves status of a created payment
+	
+GET http://<server>:<port>/payments/<paymentId>
+
+Response example: 
+
+```
+{
+    "id": "5b0723b8e997093a70eb5597",
+    "customer": {
+        "id": "5b0723b7e997093a70eb5596",
+        "name": "John Doe",
+        "email": "john@doe.com",
+        "cpf": "00000000191"
+    },
+    "type": "CREDIT_CARD",
+    "status": "DECLINED",
+    "amount": 30,
+    "brand": "VISA",
+    "holder": "john doe",
+    "number": "39483294832",
+    "cvv": "666",
+    "expiration": "2020-02-01"
+}
+```
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Eclipse](https://www.eclipse.org/) - IDE
+* [Spring](https://spring.io/) - Java Framework
 * [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
