@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+
 import com.ebusato.moip.challenge.persistence.model.Customer;
 import com.ebusato.moip.challenge.persistence.model.payment.Payment;
 import com.ebusato.moip.challenge.persistence.model.payment.PaymentType;
@@ -88,8 +90,30 @@ public class CreditCardPayment extends Payment {
 	}
 	
 	@Override
-	public boolean equals(Object other) {
-		return Objects.equals(this, other);
+	public boolean equals(Object obj) {
+		if (this == obj) {
+	        return true;
+	    }
+	    if (obj == null) {
+	        return false;
+	    }
+	    if (getClass() != obj.getClass()) {
+	        return false;
+	    }
+	    CreditCardPayment other = CreditCardPayment.class.cast(obj);
+	    
+		return new EqualsBuilder()
+				.append(id, other.id)
+					.append(type, other.type)
+						.append(status, other.status)
+							.append(amount, other.amount)
+								.append(customer, other.customer)
+									.append(brand, other.brand)
+										.append(holder, other.holder)
+											.append(number, other.number)
+												.append(cvv, other.cvv)
+													.append(expiration, other.expiration)
+														.isEquals();
 	}
 
 	@Override

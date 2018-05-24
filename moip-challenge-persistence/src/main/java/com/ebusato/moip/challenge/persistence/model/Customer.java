@@ -3,6 +3,7 @@ package com.ebusato.moip.challenge.persistence.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.springframework.data.annotation.Id;
 
 import com.google.common.base.MoreObjects;
@@ -60,8 +61,24 @@ public class Customer implements Comparable<Customer>, Serializable {
 	}
 	
 	@Override
-	public boolean equals(Object other) {
-		return Objects.equals(this, other);
+	public boolean equals(Object obj) {
+		if (this == obj) {
+	        return true;
+	    }
+	    if (obj == null) {
+	        return false;
+	    }
+	    if (getClass() != obj.getClass()) {
+	        return false;
+	    }
+	    Customer other = Customer.class.cast(obj);
+	    
+		return new EqualsBuilder()
+				.append(id, other.id)
+					.append(name, other.name)
+						.append(email, other.email)
+							.append(cpf, other.cpf)
+								.isEquals();
 	}
 
 	@Override

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -90,8 +91,25 @@ public abstract class Payment implements Comparable<Payment>, Serializable {
 	}
 	
 	@Override
-	public boolean equals(Object other) {
-		return Objects.equals(this, other);
+	public boolean equals(Object obj) {
+		if (this == obj) {
+	        return true;
+	    }
+	    if (obj == null) {
+	        return false;
+	    }
+	    if (getClass() != obj.getClass()) {
+	        return false;
+	    }
+	    Payment other = Payment.class.cast(obj);
+	    
+		return new EqualsBuilder()
+				.append(id, other.id)
+					.append(type, other.type)
+						.append(status, other.status)
+							.append(amount, other.amount)
+								.append(customer, other.customer)
+									.isEquals();
 	}
 
 	@Override
