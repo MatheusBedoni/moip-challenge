@@ -46,7 +46,7 @@ Availables endpoints are:
 
 ### Creates a new payment
 
-POST http://<server>:<port>/payments
+POST http://{server}:{port}/payments
 
 Valid payment types are: "BOLETO", "CREDIT_CARD"
 
@@ -97,7 +97,7 @@ Expiration date must follow the pattern: yyyy-MM
 
 ### Retrieves status of a created payment
 	
-GET http://<server>:<port>/payments/<paymentId>
+GET http://{server}:{port}/payments/{paymentId}
 
 Response example: 
 
