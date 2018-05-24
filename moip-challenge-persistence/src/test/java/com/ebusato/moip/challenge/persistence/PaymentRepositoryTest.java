@@ -108,7 +108,7 @@ public class PaymentRepositoryTest implements ApplicationContextAware {
 		
 		switch (type) {
 			case CREDIT_CARD:
-				payment = new CreditCardPayment();
+				payment = new CreditCardPayment(customer, BigDecimal.valueOf(20));
 				CreditCardPayment ccPayment = CreditCardPayment.class.cast(payment);				
 				ccPayment.setBrand(CreditCardBrand.MASTERCARD);
 				ccPayment.setCvv("666");
@@ -117,7 +117,7 @@ public class PaymentRepositoryTest implements ApplicationContextAware {
 				ccPayment.setNumber("66667777788889999");
 				break;
 			case BOLETO:
-				payment = new BoletoPayment();
+				payment = new BoletoPayment(customer, BigDecimal.valueOf(20));
 				BoletoPayment boletoPayment = BoletoPayment.class.cast(payment);				
 				boletoPayment.setNumber("1234567890");
 				break;		
@@ -125,11 +125,7 @@ public class PaymentRepositoryTest implements ApplicationContextAware {
 				throw new IllegalArgumentException("invalid payment type!");
 		}
 		
-		payment.setAmount(BigDecimal.valueOf(20));
-		payment.setType(type);
 		payment.setStatus(PaymentStatus.NEW);
-		payment.setCustomer(customer);
-		
 		return payment;
 	}
 

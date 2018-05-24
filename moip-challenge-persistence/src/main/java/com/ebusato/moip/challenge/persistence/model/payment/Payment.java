@@ -26,7 +26,12 @@ public abstract class Payment implements Comparable<Payment>, Serializable {
 	protected PaymentType type;
 	protected PaymentStatus status;
 	
-	protected BigDecimal amount;	
+	protected BigDecimal amount;
+	
+	public Payment(Customer customer, BigDecimal amount) {
+		this.customer = customer;
+		this.amount = amount;
+	}
 	
 	public String getId() {
 		return id;

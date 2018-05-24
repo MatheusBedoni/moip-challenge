@@ -1,8 +1,11 @@
 package com.ebusato.moip.challenge.persistence.model.payment.boleto;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
+import com.ebusato.moip.challenge.persistence.model.Customer;
 import com.ebusato.moip.challenge.persistence.model.payment.Payment;
+import com.ebusato.moip.challenge.persistence.model.payment.PaymentType;
 import com.google.common.base.MoreObjects;
 import com.google.common.collect.ComparisonChain;
 
@@ -11,7 +14,12 @@ public class BoletoPayment extends Payment {
 	private static final long serialVersionUID = 565365668541167957L;
 	
 	private String number;
-
+		
+	public BoletoPayment(Customer customer, BigDecimal amount) {
+		super(customer, amount);
+		this.type = PaymentType.BOLETO;
+	}
+		
 	public String getNumber() {
 		return number;
 	}

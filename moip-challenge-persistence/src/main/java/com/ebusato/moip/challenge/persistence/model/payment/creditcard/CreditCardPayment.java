@@ -1,9 +1,12 @@
 package com.ebusato.moip.challenge.persistence.model.payment.creditcard;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import com.ebusato.moip.challenge.persistence.model.Customer;
 import com.ebusato.moip.challenge.persistence.model.payment.Payment;
+import com.ebusato.moip.challenge.persistence.model.payment.PaymentType;
 import com.google.common.base.MoreObjects;
 import com.google.common.collect.ComparisonChain;
 
@@ -19,18 +22,9 @@ public class CreditCardPayment extends Payment {
 	
 	private LocalDate expiration;
 	
-	public CreditCardPayment() {
-		super();
-	}
-	
-	public CreditCardPayment(Payment payment) {
-		if (payment != null) {
-			super.id = payment.getId();
-			super.amount = payment.getAmount();
-			super.customer = payment.getCustomer();
-			super.status = payment.getStatus();
-			super.type = payment.getType();			
-		}
+	public CreditCardPayment(Customer customer, BigDecimal amount) {
+		super(customer, amount);
+		this.type = PaymentType.CREDIT_CARD;
 	}
 
 	public CreditCardBrand getBrand() {
