@@ -1,10 +1,9 @@
 package com.ebusato.moip.challenge.persistence;
 
+import static com.ebusato.moip.challenge.persistence.MoipPersistenceTestUtils.newPayment;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.List;
 
 import org.hamcrest.Matchers;
@@ -26,11 +25,7 @@ import org.springframework.util.CollectionUtils;
 
 import com.ebusato.moip.challenge.persistence.model.Customer;
 import com.ebusato.moip.challenge.persistence.model.payment.Payment;
-import com.ebusato.moip.challenge.persistence.model.payment.PaymentStatus;
 import com.ebusato.moip.challenge.persistence.model.payment.PaymentType;
-import com.ebusato.moip.challenge.persistence.model.payment.boleto.BoletoPayment;
-import com.ebusato.moip.challenge.persistence.model.payment.creditcard.CreditCardBrand;
-import com.ebusato.moip.challenge.persistence.model.payment.creditcard.CreditCardPayment;
 import com.ebusato.moip.challenge.persistence.repository.CustomerRepository;
 import com.ebusato.moip.challenge.persistence.repository.PaymentRepository;
 
@@ -53,7 +48,7 @@ public class PaymentRepositoryTest implements ApplicationContextAware {
 	@Test
 	public void testSaveCreditCardPayment() {		
 		//given
-		Payment payment = this.newPayment(PaymentType.CREDIT_CARD);
+		Payment payment = newPayment(PaymentType.CREDIT_CARD, customer);
 		
 		//when
 		Payment saved = paymentRepository.save(payment);
@@ -66,7 +61,7 @@ public class PaymentRepositoryTest implements ApplicationContextAware {
 	@Test
 	public void testSaveBoletoPayment() {		
 		//given
-		Payment payment = this.newPayment(PaymentType.BOLETO);
+		Payment payment = newPayment(PaymentType.BOLETO, customer);
 		
 		//when
 		Payment saved = paymentRepository.save(payment);
@@ -79,7 +74,7 @@ public class PaymentRepositoryTest implements ApplicationContextAware {
 	@Test
 	public void testSaveAndRetrievePayment() {		
 		//given
-		Payment payment = this.newPayment(PaymentType.CREDIT_CARD);
+		Payment payment = newPayment(PaymentType.CREDIT_CARD, customer);
 		
 		//when
 		Payment saved = paymentRepository.save(payment);
@@ -92,7 +87,7 @@ public class PaymentRepositoryTest implements ApplicationContextAware {
 	@Test
 	public void testSaveAndDeletePayment() {		
 		//given
-		Payment payment = this.newPayment(PaymentType.CREDIT_CARD);
+		Payment payment = newPayment(PaymentType.CREDIT_CARD, customer);
 		
 		//when
 		Payment saved = paymentRepository.save(payment);
@@ -100,33 +95,6 @@ public class PaymentRepositoryTest implements ApplicationContextAware {
 		
 		//then
 		assertThat(paymentRepository.count(), Matchers.is(0L));		
-	}
-	
-	private Payment newPayment(PaymentType type) {
-		
-		Payment payment = null;
-		
-		switch (type) {
-			case CREDIT_CARD:
-				payment = new CreditCardPayment(customer, BigDecimal.valueOf(20));
-				CreditCardPayment ccPayment = CreditCardPayment.class.cast(payment);				
-				ccPayment.setBrand(CreditCardBrand.MASTERCARD);
-				ccPayment.setCvv("666");
-				ccPayment.setExpiration(LocalDate.now());
-				ccPayment.setHolder("James Smith");
-				ccPayment.setNumber("66667777788889999");
-				break;
-			case BOLETO:
-				payment = new BoletoPayment(customer, BigDecimal.valueOf(20));
-				BoletoPayment boletoPayment = BoletoPayment.class.cast(payment);				
-				boletoPayment.setNumber("1234567890");
-				break;		
-			default:
-				throw new IllegalArgumentException("invalid payment type!");
-		}
-		
-		payment.setStatus(PaymentStatus.NEW);
-		return payment;
 	}
 
 	@Override

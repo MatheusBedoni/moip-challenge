@@ -1,5 +1,6 @@
 package com.ebusato.moip.challenge.persistence;
 
+import static com.ebusato.moip.challenge.persistence.MoipPersistenceTestUtils.newCustomer;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
@@ -32,7 +33,7 @@ public class CustomerRepositoryTest {
 	@Test
 	public void testSaveCustomer() {		
 		//given
-		Customer customer = this.newCustomer();
+		Customer customer = newCustomer();
 		
 		//when
 		Customer saved = customerRepository.save(customer);
@@ -45,7 +46,7 @@ public class CustomerRepositoryTest {
 	@Test
 	public void testSaveAndRetrieveCustomer() {		
 		//given
-		Customer customer = this.newCustomer();
+		Customer customer = newCustomer();
 				
 		//when
 		Customer saved = customerRepository.save(customer);
@@ -58,7 +59,7 @@ public class CustomerRepositoryTest {
 	@Test
 	public void testSaveAndDeletePayment() {		
 		//given
-		Customer customer = this.newCustomer();
+		Customer customer = newCustomer();
 						
 		//when
 		Customer saved = customerRepository.save(customer);
@@ -66,13 +67,5 @@ public class CustomerRepositoryTest {
 
 		//then
 		assertThat(customerRepository.count(), Matchers.is(0L));		
-	}
-	
-	private Customer newCustomer() {		
-		Customer customer = new Customer();
-		customer.setName("John Doe");
-		customer.setEmail("john@doe.com");
-		customer.setCpf("00000000191");		
-		return customer;
 	}
 }

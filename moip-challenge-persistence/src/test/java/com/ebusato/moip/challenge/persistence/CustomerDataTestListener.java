@@ -1,5 +1,7 @@
 package com.ebusato.moip.challenge.persistence;
 
+import static com.ebusato.moip.challenge.persistence.MoipPersistenceTestUtils.newCustomer;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.TestContext;
 import org.springframework.test.context.support.AbstractTestExecutionListener;
@@ -18,11 +20,7 @@ public class CustomerDataTestListener extends AbstractTestExecutionListener {
 			.getAutowireCapableBeanFactory()
 				.autowireBean(this);
 		
-		Customer customer = new Customer();
-		customer.setName("John Doe");
-		customer.setEmail("john@doe.com");
-		customer.setCpf("00000000191");		
-		customerRepository.save(customer);
-		
+		Customer customer = newCustomer();		
+		customerRepository.save(customer);		
 	}
 }
