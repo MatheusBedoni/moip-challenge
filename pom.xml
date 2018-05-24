@@ -6,7 +6,7 @@
 	
 	<groupId>com.ebusato.moip</groupId>
 	<artifactId>moip-challenge</artifactId>
-	<version>${moip.challenge.version}</version>	
+	<version>0.0.1-SNAPSHOT</version>	
 	<packaging>pom</packaging>
 	
 	<name>parent pom</name>
@@ -33,7 +33,7 @@
 	</modules>
 	
 	<properties>
-		<moip.challenge.version>0.0.1-SNAPSHOT</moip.challenge.version>
+		<guava.version>23.0</guava.version>
 	</properties>
 	
 	<dependencyManagement>
@@ -42,19 +42,33 @@
 			<dependency>
 				<groupId>com.ebusato.moip</groupId>
 				<artifactId>moip-challenge-persistence</artifactId>
-				<version>${moip.challenge.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.ebusato.moip</groupId>
 				<artifactId>moip-challenge-service</artifactId>
-				<version>${moip.challenge.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.ebusato.moip</groupId>
 				<artifactId>moip-challenge-api</artifactId>
-				<version>${moip.challenge.version}</version>
+				<version>${project.version}</version>
 			</dependency>			
 		</dependencies>
 	</dependencyManagement>
+	
+	<!-- All modules dependecies -->
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+    		<groupId>com.google.guava</groupId>
+    		<artifactId>guava</artifactId>
+    		<version>${guava.version}</version>
+		</dependency>
+	</dependencies>
 	
 </project>
