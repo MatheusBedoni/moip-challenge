@@ -4,10 +4,10 @@ Challenge proposed by MOIP.
 
 ## Getting Started
 
-Rest API build with Spring Boot. 
-Persistence layer using Spring Data MongoDB. 
-Application has mongodb embbeded.
-Default Running port 8080.  
+Rest API build with Spring Boot.   
+Persistence layer using Spring Data MongoDB.   
+Application has mongodb embbeded.  
+Default Running port 8080.    
 
 ### Prerequisites
 
