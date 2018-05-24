@@ -24,6 +24,8 @@ import com.ebusato.moip.challenge.persistence.model.payment.PaymentType;
 import com.ebusato.moip.challenge.persistence.model.payment.boleto.BoletoPayment;
 import com.ebusato.moip.challenge.persistence.model.payment.creditcard.CreditCardPayment;
 import com.ebusato.moip.challenge.persistence.repository.PaymentRepository;
+import com.ebusato.moip.challenge.service.impl.AcquirerServiceMock;
+import com.ebusato.moip.challenge.service.impl.PaymentServiceImpl;
 import com.ebusato.moip.challenge.service.model.CreditCardDetails;
 import com.google.common.collect.Lists;
 

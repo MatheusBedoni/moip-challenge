@@ -1,4 +1,4 @@
-package com.ebusato.moip.challenge.service;
+package com.ebusato.moip.challenge.service.impl;
 
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ebusato.moip.challenge.persistence.model.payment.PaymentStatus;
 import com.ebusato.moip.challenge.persistence.model.payment.creditcard.CreditCardPayment;
+import com.ebusato.moip.challenge.service.AcquirerService;
 import com.ebusato.moip.challenge.service.model.AcquirerResponse;
 
 @Service

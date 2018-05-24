@@ -14,6 +14,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.ebusato.moip.challenge.persistence.model.Customer;
 import com.ebusato.moip.challenge.persistence.repository.CustomerRepository;
+import com.ebusato.moip.challenge.service.impl.CustomerServiceImpl;
 
 import static com.ebusato.moip.challenge.service.MoipServiceTestUtils.newCustomer;
 

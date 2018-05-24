@@ -1,4 +1,4 @@
-package com.ebusato.moip.challenge.service;
+package com.ebusato.moip.challenge.service.impl;
 
 import java.util.Optional;
 
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.ebusato.moip.challenge.persistence.model.Customer;
 import com.ebusato.moip.challenge.persistence.repository.CustomerRepository;
+import com.ebusato.moip.challenge.service.CustomerService;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {

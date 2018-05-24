@@ -1,7 +1,8 @@
-package com.ebusato.moip.challenge.service;
+package com.ebusato.moip.challenge.service.impl;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -10,11 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ebusato.moip.challenge.persistence.model.Customer;
+import com.ebusato.moip.challenge.persistence.model.payment.Payment;
 import com.ebusato.moip.challenge.persistence.model.payment.PaymentStatus;
 import com.ebusato.moip.challenge.persistence.model.payment.PaymentType;
 import com.ebusato.moip.challenge.persistence.model.payment.boleto.BoletoPayment;
 import com.ebusato.moip.challenge.persistence.model.payment.creditcard.CreditCardPayment;
 import com.ebusato.moip.challenge.persistence.repository.PaymentRepository;
+import com.ebusato.moip.challenge.service.AcquirerService;
+import com.ebusato.moip.challenge.service.CustomerService;
+import com.ebusato.moip.challenge.service.PaymentService;
 import com.ebusato.moip.challenge.service.model.AcquirerResponse;
 import com.ebusato.moip.challenge.service.model.CreditCardDetails;
 
@@ -68,5 +73,11 @@ public class PaymentServiceImpl implements PaymentService {
 		
 		CreditCardPayment updated = paymentRepository.save(saved);
 		return updated;
+	}
+	
+	@Override
+	public Payment getDetails(String paymentId) {
+		Optional<Payment> found = this.paymentRepository.findById(paymentId);
+		return found.get();
 	}
 }

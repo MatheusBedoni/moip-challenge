@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import com.ebusato.moip.challenge.persistence.model.Customer;
+import com.ebusato.moip.challenge.persistence.model.payment.Payment;
 import com.ebusato.moip.challenge.persistence.model.payment.PaymentType;
 import com.ebusato.moip.challenge.persistence.model.payment.boleto.BoletoPayment;
 import com.ebusato.moip.challenge.persistence.model.payment.creditcard.CreditCardPayment;
@@ -38,5 +39,12 @@ public interface PaymentService {
 	 * @return credit card payment with status.
 	 */
 	CreditCardPayment processCreditCardPayment(BigDecimal amount, Customer customer, CreditCardDetails ccDetails);
+
+	/**
+	 * Retrieves details for given payment.
+	 * @param paymentId.
+	 * @return.
+	 */
+	Payment getDetails(String paymentId);
 
 }
