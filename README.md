@@ -7,7 +7,7 @@ Challenge proposed by MOIP.
 Rest API build with Spring Boot.   
 Persistence layer using Spring Data MongoDB.   
 Application has mongodb embbeded.  
-Default running port 8080.
+Default running port 8080 (change it if desired in application.properties).   
 Docker build integrated with maven.
 
 ### Prerequisites
@@ -55,7 +55,7 @@ $ mvn clean package dockerfile:build
 Execute the following command
 
 ```
-$ docker run -p 8080:8080 com.ebusato.moip/moip-challenge-api:0.0.1-SNAPSHOT
+$ docker run -p {port}:{port} com.ebusato.moip/moip-challenge-api:0.0.1-SNAPSHOT
 ```
 
 ## Endpoints
