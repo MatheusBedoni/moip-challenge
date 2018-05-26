@@ -7,13 +7,15 @@ Challenge proposed by MOIP.
 Rest API build with Spring Boot.   
 Persistence layer using Spring Data MongoDB.   
 Application has mongodb embbeded.  
-Default Running port 8080.    
+Default running port 8080.
+Docker build integrated with maven.
 
 ### Prerequisites
 
 ```
 Java 8
 Maven
+Docker (optional)
 ```
 
 ### Getting the code
@@ -34,10 +36,26 @@ $ mvn clean package -U
 
 ### Running application
 
-Execute the following commando into root folder:
+Execute the following command into root folder:
 
 ```
 $ java -jar moip-challenge-api/target/moip-challenge-api-0.0.1-SNAPSHOT.jar
+```
+
+### Building docker image
+
+Execute the following command into **/moip-challenge-api** folder
+
+```
+$ mvn clean package dockerfile:build
+```
+
+### Running docker image
+
+Execute the following command
+
+```
+$ docker run -p 8080:8080 com.ebusato.moip/moip-challenge-api:0.0.1-SNAPSHOT
 ```
 
 ## Endpoints
@@ -121,8 +139,13 @@ Response example:
 }
 ```
 
+## TODO
+
+- Logging
+
 ## Built With
 
 * [Eclipse](https://www.eclipse.org/) - IDE
 * [Spring](https://spring.io/) - Java Framework
 * [Maven](https://maven.apache.org/) - Dependency Management
+* [Docker](https://www.docker.com/) - Container

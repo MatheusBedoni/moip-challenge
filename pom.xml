@@ -34,6 +34,7 @@
 	
 	<properties>
 		<guava.version>23.0</guava.version>
+		<dockerfile.maven.version>1.4.2</dockerfile.maven.version>
 	</properties>
 	
 	<dependencyManagement>
@@ -51,6 +52,19 @@
 			</dependency>		
 		</dependencies>
 	</dependencyManagement>
+	
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+	  				<groupId>com.spotify</groupId>
+	  				<artifactId>dockerfile-maven-plugin</artifactId>
+	  				<version>${dockerfile.maven.version}</version>	  				
+				</plugin>
+			</plugins>		
+		</pluginManagement>
+	</build>
+	
 	
 	<!-- All modules dependecies -->
 	<dependencies>
