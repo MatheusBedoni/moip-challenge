@@ -15,7 +15,11 @@ Docker build integrated with maven.
 ```
 Java 8
 Maven
-Docker (optional)
+```
+### Optional
+
+```
+Docker
 ```
 
 ### Getting the code
@@ -36,7 +40,7 @@ $ mvn clean package -U
 
 ### Running application
 
-Execute the following command into root folder:
+Run the following command into root folder:
 
 ```
 $ java -jar moip-challenge-api/target/moip-challenge-api-0.0.1-SNAPSHOT.jar
@@ -44,7 +48,7 @@ $ java -jar moip-challenge-api/target/moip-challenge-api-0.0.1-SNAPSHOT.jar
 
 ### Building docker image
 
-Execute the following command into **/moip-challenge-api** folder
+Run the following command into **/moip-challenge-api** folder:
 
 ```
 $ mvn clean package dockerfile:build
@@ -52,7 +56,7 @@ $ mvn clean package dockerfile:build
 
 ### Running docker image
 
-Execute the following command
+Run the following command:
 
 ```
 $ docker run -p {port}:{port} com.ebusato.moip/moip-challenge-api:0.0.1-SNAPSHOT
